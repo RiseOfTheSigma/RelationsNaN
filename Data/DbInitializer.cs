@@ -1,4 +1,5 @@
-﻿using RelationsNaN.Models;
+﻿using Microsoft.CodeAnalysis;
+using RelationsNaN.Models;
 
 namespace RelationsNaN.Data
 {
@@ -38,6 +39,35 @@ namespace RelationsNaN.Data
                     Image = "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/XCOM_2_cover_art.jpg/220px-XCOM_2_cover_art.jpg"
                 };
                 await _context.Game.AddAsync(game3);
+
+                await _context.SaveChangesAsync();
+            }
+
+            if (_context.Plateforms.Count() == 0)
+            {
+                Plateform ps5 = new Plateform()
+                {
+                    Name = "PS4"
+                };
+                await _context.Plateforms.AddAsync(ps5);
+
+                Plateform xbox360 = new Plateform()
+                {
+                    Name = "Xbox One"
+                };
+                await _context.Plateforms.AddAsync(xbox360);
+
+                Plateform n64 = new Plateform()
+                {
+                    Name = "Switch"
+                };
+                await _context.Plateforms.AddAsync(n64);
+
+                Plateform pc = new Plateform()
+                {
+                    Name = "PC"
+                };
+                await _context.Plateforms.AddAsync(pc);
 
                 await _context.SaveChangesAsync();
             }

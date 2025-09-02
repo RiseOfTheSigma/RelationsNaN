@@ -1,4 +1,7 @@
-﻿namespace RelationsNaN.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.CodeAnalysis;
+
+namespace RelationsNaN.Models
 {
     public class Game
     {
@@ -6,5 +9,17 @@
         public string Name { get; set; }
         public string Image { get; set; }
         public int ReleaseYear { get; set; }
+
+
+        public int? GenreId { get; set; }
+        [ValidateNever]
+        public Genre? Genre { get; set; }
+
+        [ValidateNever]
+        public List<Plateform> Plateforms { get; set; }
+
+        [ValidateNever]
+        public List<GamePurchase> GamePurchases { get; set; }
+
     }
 }
