@@ -24,6 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Genre)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Plateforms)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -34,7 +37,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                    <img src=" @Html.DisplayFor(modelItem => item.Image)" alt="Alternate Text" height="200" />
+               
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReleaseYear)

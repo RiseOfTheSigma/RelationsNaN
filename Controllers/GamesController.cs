@@ -79,13 +79,16 @@ namespace RelationsNaN.Controllers
                 return NotFound();
             }
 
-            var game = await _context.Game.FindAsync(id);
+            var game = await _context.Game
+     .Include(g => g.Plateforms)
+     .Include(g => g.Genre)
+     .FirstOrDefaultAsync(g => g.Id == id);
             if (game == null)
             {
                 return NotFound();
             }
             ViewData["GenreId"] = new SelectList(_context.Genre, "Id", "Name", game.GenreId);
-            ViewData["Plateforms"] = new SelectList(_context.Plateforms.Where(c => !game.Plateforms.Contains(c)), "Id", "Name", game.Plateforms);
+            ViewData["Platforms"] = new SelectList(_context.Plateforms.Where(c => !game.Plateforms.Contains(c)), "Id", "Name", game.Plateforms);
             return View(game);
         }
 
